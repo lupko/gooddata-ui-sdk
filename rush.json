@@ -301,6 +301,12 @@
      */
     "projects": [
         {
+            "packageName": "@gooddata/insight-creator",
+            "projectFolder": "tools/insight-creator",
+            "reviewCategory": "tools",
+            "shouldPublish": false
+        },
+        {
             "packageName": "@gooddata/util",
             "projectFolder": "libs/util",
             "reviewCategory": "production",

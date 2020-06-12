@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "target": "es5",
+        "module": "commonjs",
+        "importHelpers": true,
+        "lib": ["es6", "dom"],
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "strict": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "removeComments": false,
+        "baseUrl": "../../libs",
+        "paths": {
+            "@gooddata/sdk-backend-spi": ["sdk-backend-spi/src"],
+            "@gooddata/sdk-model": ["sdk-model/src"],
+            "@gooddata/sdk-ui": ["sdk-ui/src"]
+        }
+    },
+    "exclude": ["node_modules", "dist"]
+}
