@@ -426,6 +426,10 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
     public componentWillUnmount() {
         this.unmounted = true;
 
+        if (this.containerRef) {
+            this.containerRef.removeEventListener("mousedown", this.onContainerMouseDown);
+        }
+
         this.clearTimeouts();
     }
 
@@ -545,7 +549,6 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
                     className="gd-table ag-theme-balham s-pivot-table"
                     style={style}
                     ref={this.setContainerRef}
-                    onMouseDown={this.onContainerMouseDown}
                 >
                     <AgGridReact {...this.gridOptions} modules={AllCommunityModules} />
                     {shouldRenderLoadingOverlay ? this.renderLoading() : null}
@@ -608,6 +611,10 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
 
     private setContainerRef = (container: HTMLDivElement): void => {
         this.containerRef = container;
+
+        if (this.containerRef) {
+            this.containerRef.addEventListener("mousedown", this.onContainerMouseDown);
+        }
     };
 
     private getColumnTotals = () => {
@@ -1240,7 +1247,7 @@ export class CorePivotTablePure extends React.Component<ICorePivotTableProps, IC
         this.updateStickyRowContent(scrollPosition);
     };
 
-    private onContainerMouseDown = (event: React.MouseEvent) => {
+    private onContainerMouseDown = (event: MouseEvent) => {
         if (event.target && this.isHeaderResizer(event.target as HTMLElement)) {
             event.stopPropagation();
         }
