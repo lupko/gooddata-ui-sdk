@@ -834,6 +834,9 @@
     "ComboChart.68eb620854fbd4e48c78427acdc893c9": {
         "comment": "Auto-generated insight for test scenario ComboChart - stack primary measures with different chart type - area."
     },
+    "ComboChart.693d068589b6204a6890d5ce2e06eca6": {
+        "comment": "Auto-generated insight for test scenario ComboChart - data points - forced visible."
+    },
     "ComboChart.709200a13cc59b9ddea45280fd54557d": {
         "comment": "Auto-generated insight for test scenario ComboChart - legend position - disabled."
     },
@@ -884,6 +887,9 @@
     "ComboChart.ac77eb870277235b221b0e6af671eff2": {
         "comment": "Auto-generated insight for test scenario ComboChart - dual axis multiple measures without slicingcolumn-column."
     },
+    "ComboChart.ad9c42a4c0288c400caf0c9edf462c51": {
+        "comment": "Auto-generated insight for test scenario ComboChart - data points - forced hidden."
+    },
     "ComboChart.b5eef2a766c7c089941db284fed158bb": {
         "comment": "Auto-generated insight for test scenario ComboChart - stack primary measures when both column chart - normal stacking."
     },
@@ -910,6 +916,9 @@
     "ComboChart.c808a4aa52d33bbbcb7e59477b9b3886": {
         "comment": "Auto-generated insight for test scenario ComboChart - axis name configuration - low."
     },
+    "ComboChart.c8f4aa27b340f10e1aa5d170d6426c68": {
+        "comment": "Auto-generated insight for test scenario ComboChart - data points - default for pre-feature charts."
+    },
     "ComboChart.caedde63fb0c968318dac540ecb57f84": {
         "comment": "Auto-generated insight for test scenario ComboChart - dual axis multiple measures without slicingcolumn-line."
     },
@@ -932,6 +941,11 @@
         "scenarioName": "one primary measure with viewBy",
         "visName": "ComboChart"
     },
+    "ComboChart.dfde2f29efcfffefa14812d68ac8871e": {
+        "comment": "Auto-generated insight for test scenario ComboChart - with many data points.",
+        "scenarioName": "with many data points",
+        "visName": "ComboChart"
+    },
     "ComboChart.e3e36d99546cb5cc0e2ac5c6c9a50c33": {
         "comment": "Auto-generated insight for test scenario ComboChart - two secondary measure with viewBy.",
         "scenarioName": "two secondary measure with viewBy",
@@ -942,6 +956,9 @@
     },
     "ComboChart.eba0312c73accf44b490f120cbbcb625": {
         "comment": "Auto-generated insight for test scenario ComboChart - dual axis two measures without slicingcolumn-area."
+    },
+    "ComboChart.ee46169d52882002b70dcd4977a605e3": {
+        "comment": "Auto-generated insight for test scenario ComboChart - data points - auto visibility."
     },
     "ComboChart.eeaf82dd751072f09dc8f7236c805f68": {
         "comment": "Auto-generated insight for test scenario ComboChart - one primary and secondary measure with viewBy sorted by primary measure.",
