@@ -11,7 +11,11 @@ import { VisualizationTypes } from "@gooddata/sdk-ui";
 import { IChartOptions, ISeriesItem } from "../../typings/unsafe";
 import { IChartConfig } from "../../../interfaces";
 
-export function parseValue(value: string): number | null {
+export function parseValue(value: string | number): number | null {
+    if (typeof value === "number") {
+        return value;
+    }
+
     const parsedValue = parseFloat(value);
     return isNaN(parsedValue) ? null : parsedValue;
 }
