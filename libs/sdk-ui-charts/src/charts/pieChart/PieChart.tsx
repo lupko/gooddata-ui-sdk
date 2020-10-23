@@ -28,7 +28,7 @@ const pieChartDefinition: IChartDefinition<IPieChartBucketProps, IPieChartProps>
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(roundChartDimensions);
     },
 };

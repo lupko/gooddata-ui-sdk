@@ -29,7 +29,7 @@ const donutChartDefinition: IChartDefinition<IDonutChartBucketProps, IDonutChart
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(roundChartDimensions);
     },
 };

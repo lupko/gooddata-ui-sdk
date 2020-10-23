@@ -42,7 +42,7 @@ const treemapDefinition: IChartDefinition<ITreemapBucketProps, ITreemapProps> = 
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...sortBy)
+            .withSorting(...(sortBy ?? []))
             .withDimensions(treemapDimensions);
     },
 };

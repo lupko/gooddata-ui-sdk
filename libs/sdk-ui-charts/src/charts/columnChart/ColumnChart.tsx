@@ -41,7 +41,7 @@ const columnChartDefinition: IChartDefinition<IColumnChartBucketProps, IColumnCh
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(stackedChartDimensions);
     },
     propOverridesFactory: (props, buckets) => {

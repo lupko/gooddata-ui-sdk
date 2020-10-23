@@ -41,7 +41,7 @@ const lineChartDefinition: IChartDefinition<ILineChartBucketProps, ILineChartPro
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(lineChartDimensions);
     },
 };

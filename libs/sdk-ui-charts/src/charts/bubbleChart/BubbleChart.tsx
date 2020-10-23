@@ -30,7 +30,7 @@ const bubbleChartDefinition: IChartDefinition<IBubbleChartBucketProps, IBubbleCh
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(pointyChartDimensions);
     },
 };

@@ -56,7 +56,7 @@ const comboChartDefinition: IChartDefinition<IComboChartBucketProps, IComboChart
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...props.sortBy)
+            .withSorting(...(props.sortBy ?? []))
             .withDimensions(defaultDimensions);
     },
     propOverridesFactory: (props) => {

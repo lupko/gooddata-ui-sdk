@@ -40,7 +40,7 @@ const heatmapDefinition: IChartDefinition<IHeatmapBucketProps, IHeatmapProps> = 
             .workspace(workspace)
             .execution()
             .forBuckets(buckets, props.filters)
-            .withSorting(...sortBy)
+            .withSorting(...(sortBy ?? []))
             .withDimensions(heatmapDimensions);
     },
 };
