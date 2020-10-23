@@ -8,7 +8,7 @@ import { styleVariables } from "./styles/variables";
 import { isOneOfTypes } from "../_util/common";
 import { chartClick } from "./drilldownEventing";
 import { setupDrilldown } from "./setupDrilldownToParentAttribute";
-import Highcharts from "../../lib";
+import Highcharts, { HighchartOptions } from "../../lib";
 import { supportedDualAxesChartTypes } from "../_chartOptions/chartCapabilities";
 import { IChartOptions } from "../../typings/unsafe";
 import { ITheme } from "@gooddata/sdk-backend-spi";
@@ -38,7 +38,7 @@ function fixNumericalAxisOutOfMinMaxRange(axis: IHighchartsAxisExtend) {
 
 let previousChart: any = null;
 
-function getThemedConfiguration(theme: ITheme): any {
+function getThemedConfiguration(theme: ITheme): HighchartOptions {
     const backgroundColor =
         theme?.chart?.backgroundColor ??
         theme?.palette?.complementary?.c0 ??
@@ -188,4 +188,8 @@ export function getCommonConfiguration(
         (configuration, handler) => handler(configuration, chartOptions, drillConfig),
         commonConfiguration,
     );
+}
+
+export function getBaseTemplate(): HighchartOptions {
+    return cloneDeep(BASE_TEMPLATE);
 }
