@@ -1,6 +1,343 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`seriesBuilder does something 1`] = `
+exports[`seriesBuilder creates series with drilling 1`] = `
+Array [
+  Object {
+    "data": Array [
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "CompuSci",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=165678",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "CompuSci",
+        "y": 27222899.64,
+      },
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "Educationly",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=165847",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "Educationly",
+        "y": 22946895.47,
+      },
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "Explorer",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=342345",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "Explorer",
+        "y": 38596194.86,
+      },
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "Grammar Plus",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=168737",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "Grammar Plus",
+        "y": 8042031.92,
+      },
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "PhoenixSoft",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=166339",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "PhoenixSoft",
+        "y": 9525857.91,
+      },
+      Object {
+        "drillIntersection": Array [
+          Object {
+            "header": Object {
+              "measureHeaderItem": Object {
+                "format": "$#,##0.00",
+                "identifier": "aangOxLSeztu",
+                "localIdentifier": "m_aangOxLSeztu",
+                "name": "Amount",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1271",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1271",
+              },
+            },
+          },
+          Object {
+            "header": Object {
+              "attributeHeader": Object {
+                "formOf": Object {
+                  "identifier": "attr.product.id",
+                  "name": "Product",
+                  "ref": Object {
+                    "uri": "/gdc/md/referenceworkspace/obj/1054",
+                  },
+                  "uri": "/gdc/md/referenceworkspace/obj/1054",
+                },
+                "identifier": "label.product.id.name",
+                "localIdentifier": "a_label.product.id.name",
+                "name": "Product Name",
+                "ref": Object {
+                  "uri": "/gdc/md/referenceworkspace/obj/1055",
+                },
+                "uri": "/gdc/md/referenceworkspace/obj/1055",
+              },
+              "attributeHeaderItem": Object {
+                "name": "WonderKid",
+                "uri": "/gdc/md/referenceworkspace/obj/1054/elements?id=166497",
+              },
+            },
+          },
+        ],
+        "drilldown": "0",
+        "format": "$#,##0.00",
+        "name": "WonderKid",
+        "y": 10291576.74,
+      },
+    ],
+    "isSeriesDrillable": true,
+    "legendIndex": 0,
+    "name": "Amount",
+    "type": "bar",
+  },
+]
+`;
+
+exports[`seriesBuilder creates series with no drilling when no drill predicates 1`] = `
+Array [
+  Object {
+    "data": Array [
+      Object {
+        "format": "$#,##0.00",
+        "name": "CompuSci",
+        "y": 27222899.64,
+      },
+      Object {
+        "format": "$#,##0.00",
+        "name": "Educationly",
+        "y": 22946895.47,
+      },
+      Object {
+        "format": "$#,##0.00",
+        "name": "Explorer",
+        "y": 38596194.86,
+      },
+      Object {
+        "format": "$#,##0.00",
+        "name": "Grammar Plus",
+        "y": 8042031.92,
+      },
+      Object {
+        "format": "$#,##0.00",
+        "name": "PhoenixSoft",
+        "y": 9525857.91,
+      },
+      Object {
+        "format": "$#,##0.00",
+        "name": "WonderKid",
+        "y": 10291576.74,
+      },
+    ],
+    "legendIndex": 0,
+    "name": "Amount",
+    "type": "bar",
+  },
+]
+`;
+
+exports[`seriesBuilder creates series without drilling 1`] = `
 Array [
   Object {
     "data": Array [
