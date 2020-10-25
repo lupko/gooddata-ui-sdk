@@ -1,9 +1,5 @@
 // (C) 2007-2020 GoodData Corporation
-import {
-    BarSeriesBuilder,
-    HighchartSeriesStatefulMod,
-    HighchartSeriesStatefulModFactory,
-} from "../seriesBuilder";
+import { HighchartSeriesStatefulMod, HighchartSeriesStatefulModFactory } from "../seriesBuilder";
 import Highcharts, { ChartDataOptions } from "../../../lib";
 import { ReferenceLdm, ReferenceRecordings } from "@gooddata/reference-workspace";
 import { recordedDataView } from "@gooddata/sdk-backend-mockingbird";
@@ -29,6 +25,7 @@ import {
     IResultTotalHeader,
 } from "@gooddata/sdk-backend-spi";
 import { InvariantError } from "ts-invariant";
+import { BarSeriesBuilder } from "../typedSeriesBuilders";
 
 function datapointFormat<T extends ChartDataOptions>(
     _seriesIdx: number,

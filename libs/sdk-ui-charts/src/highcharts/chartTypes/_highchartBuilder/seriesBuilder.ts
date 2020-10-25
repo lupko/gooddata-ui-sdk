@@ -1,8 +1,6 @@
 // (C) 2007-2020 GoodData Corporation
 import Highcharts, { ChartDataOptions } from "../../lib";
 import { DataPoint, DataViewFacade, IDataSeries, IDataSlice } from "@gooddata/sdk-ui";
-import { SeriesBarDataOptions, SeriesBarOptions } from "highcharts";
-import { IDataView } from "@gooddata/sdk-backend-spi";
 
 type HighchartsSeriesFactory<T extends Highcharts.SeriesOptionsType> = () => T;
 type HighchartsDataPointFactory<T extends ChartDataOptions | null> = () => T;
@@ -330,6 +328,18 @@ export class HighchartsSeriesBuilder<
         return newSeries;
     }
 
+    /**
+     * Creates highchart series from the underlying data series. The builder will iterate over all data series
+     * in the order as they are returned by backend and then apply modification functions which populate the highchart
+     * series.
+     *
+     * The modification functions may or may not set the series data. If they do not, then the builder will further
+     * iterate all data points for the underlying data series, create highcharts data point and apply data point
+     * modification functions.
+     *
+     * @remarks see {@link withDataPointModifications}, {@link withStatefulModifications}
+     * @param modifications - modifications to apply
+     */
     public populateFromDataSeries(
         ...modifications: Array<HighchartSeriesModification<IDataSeries, TSeries>>
     ): HighchartsSeriesBuilder<TSeries, TData> {
@@ -352,6 +362,18 @@ export class HighchartsSeriesBuilder<
         return this;
     }
 
+    /**
+     * Creates highchart series from the underlying data slices. The builder will iterate over all data slices in
+     * the order as they are returned by the backend and then apply modification functions which populate
+     * the highchart series.
+     *
+     * The modification functions may or may not set the series data. If they do not, then the builder will further
+     * iterate all data points for the underlying data series, create highcharts data point and apply data point
+     * modification functions.
+     *
+     * @remarks see {@link withDataPointModifications}, {@link withStatefulModifications}
+     * @param modifications
+     */
     public populateFromDataSlices(
         ...modifications: Array<HighchartSeriesModification<IDataSlice, TSeries>>
     ): HighchartsSeriesBuilder<TSeries, TData> {
@@ -378,17 +400,3 @@ export class HighchartsSeriesBuilder<
         return this.series;
     }
 }
-
-const barSeriesFactory = (): SeriesBarOptions => ({ type: "bar" });
-const barDatapoint = (): SeriesBarDataOptions => ({});
-
-/**
- * Creates new builder for `bar` series.
- *
- * @param dataView - data to work with
- * @constructor
- */
-export const BarSeriesBuilder = (
-    dataView: IDataView,
-): HighchartsSeriesBuilder<SeriesBarOptions, SeriesBarDataOptions> =>
-    new HighchartsSeriesBuilder(barSeriesFactory, barDatapoint, DataViewFacade.for(dataView));
