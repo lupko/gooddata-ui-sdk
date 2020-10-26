@@ -218,16 +218,28 @@ export interface IDataSeriesCollection extends Iterable<IDataSeries> {
 
     /**
      * Descriptors of attributes that are used to create data series with scoped measure values.
+     *
+     * Note: array will be empty if the data series are not scoped.
      */
-    readonly scopingAttributes?: IAttributeDescriptor[];
+    readonly scopingAttributes: IAttributeDescriptor[];
+
+    /**
+     * Headers for attribute elements that are used to create data series with scoped measure values. For
+     * each scoping attribute in the `scopingAttributes` there is one entry in this property..
+     *
+     * Note: array will be empty if the data series are not scoped.
+     */
+    readonly scopingHeaders: IResultAttributeHeader[][];
 
     /**
      * Definitions of attributes which were sent to execution and resulted in the data series with scoped
      * measure values.
      *
      * Order of apperance matches the order of appreance in the `scopingAttributes` array.
+     *
+     * Note: array will be empty if the data series are not scoped.
      */
-    readonly scopingAttributesDef?: IAttribute[];
+    readonly scopingAttributesDef: IAttribute[];
 
     /**
      * Returns iterator over all data series created for particular measure.
@@ -375,9 +387,18 @@ export interface IDataSliceCollection extends Iterable<IDataSlice> {
     readonly count: number;
 
     /**
-     * Descriptors of attributes and/or totals that were used to create data slices.
+     * Descriptors of attributes and/or totals that were used to create data slices. The descriptors are
+     * listed in order in which the slicing has been defined.
      */
     readonly descriptors: Array<IAttributeDescriptor | ITotal>;
+
+    /**
+     * Values of headers used for slices. For each slicing attribute there is one entry in this array. Each entry
+     * contains values of attribute elements - one for each respective data slice.
+     *
+     * @remarks see `descriptors` property.
+     */
+    readonly headers: Array<IResultAttributeHeader[] | IResultTotalHeader[]>;
 
     /**
      * Returns all data slices in an array.
@@ -407,7 +428,7 @@ export interface IDataAccessMethods {
     /**
      * Convenience method to test whether the data series are scoped.
      *
-     * @returns true if scoped, false if not
+     * @returns true if there are data series and they are scoped, false if not
      */
     hasScopedSeries(): boolean;
 

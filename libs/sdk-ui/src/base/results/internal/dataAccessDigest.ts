@@ -6,8 +6,8 @@ import {
     IMeasureDescriptor,
     IMeasureGroupDescriptor,
     IResultAttributeHeader,
-    IResultHeader,
     IResultMeasureHeader,
+    IResultTotalHeader,
     isAttributeDescriptor,
     isMeasureGroupDescriptor,
     isResultAttributeHeader,
@@ -89,7 +89,7 @@ export type DataSlicesDigest = {
     /**
      * All headers in the slices dimension.
      */
-    headerItems: IResultHeader[][];
+    headerItems: Array<IResultAttributeHeader[] | IResultTotalHeader[]>;
 
     /**
      * Total number of slices
@@ -287,7 +287,12 @@ function createDataSlicesDigest(
         return;
     }
 
-    const headerItems = dataViewHeaders(dataView, dimIdx);
+    // XXX: by definition, the dimension containing the slices can contain only attributes or totals. measures
+    //  are in the other dimension. going dirty with the cast here.
+    const headerItems: Array<IResultAttributeHeader[] | IResultTotalHeader[]> = dataViewHeaders(
+        dataView,
+        dimIdx,
+    ) as any;
     const count = headerItems.length > 0 ? headerItems[0].length : 0;
     const descriptors = dataViewDimensionItems(dataView, dimIdx).filter(isAttributeDescriptor);
     const descriptorsDef = descriptors.map((d) => def.attributesIndex[d.attributeHeader.localIdentifier]);

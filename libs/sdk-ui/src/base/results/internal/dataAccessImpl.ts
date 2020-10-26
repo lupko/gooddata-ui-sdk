@@ -454,7 +454,7 @@ export class DataAccessImpl {
         let total: boolean = false;
 
         headerItems.forEach((h) => {
-            const header: IResultAttributeHeader | IResultTotalHeader = h[sliceIdx] as any;
+            const header: IResultAttributeHeader | IResultTotalHeader = h[sliceIdx];
 
             headers.push(header);
 

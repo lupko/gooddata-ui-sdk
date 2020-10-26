@@ -7,7 +7,13 @@ import {
     IDataSlice,
     IDataSliceCollection,
 } from "../dataAccess";
-import { IDataView, IMeasureDescriptor, IAttributeDescriptor } from "@gooddata/sdk-backend-spi";
+import {
+    IDataView,
+    IMeasureDescriptor,
+    IAttributeDescriptor,
+    IResultAttributeHeader,
+    IResultTotalHeader,
+} from "@gooddata/sdk-backend-spi";
 import { DataAccessImpl } from "./dataAccessImpl";
 import { DataAccessConfig, DefaultDataAccessConfig } from "../dataAccessConfig";
 import { IMeasure, IAttribute, ITotal, measureLocalId } from "@gooddata/sdk-model";
@@ -42,6 +48,7 @@ class DataSeriesCollection implements IDataSeriesCollection {
     public readonly fromMeasuresDef: IMeasure[] = [];
     public readonly scopingAttributes: IAttributeDescriptor[] = [];
     public readonly scopingAttributesDef: IAttribute[] = [];
+    public readonly scopingHeaders: IResultAttributeHeader[][] = [];
 
     constructor(private readonly dataAccess: DataAccessImpl) {
         const seriesDigest = this.dataAccess.getDataAccessPointers().series;
@@ -54,6 +61,7 @@ class DataSeriesCollection implements IDataSeriesCollection {
         this.fromMeasures = seriesDigest.fromMeasures;
         this.fromMeasuresDef = seriesDigest.fromMeasuresDef;
         this.scopingAttributes = seriesDigest.scopingAttributes;
+        this.scopingHeaders = seriesDigest.allAttributeHeaders;
         this.scopingAttributesDef = seriesDigest.scopingAttributesDef;
     }
 
@@ -105,6 +113,7 @@ class DataSeriesCollection implements IDataSeriesCollection {
 class DataSliceCollection implements IDataSliceCollection {
     public readonly count: number = 0;
     public readonly descriptors: Array<IAttributeDescriptor | ITotal> = [];
+    public readonly headers: Array<IResultAttributeHeader[] | IResultTotalHeader[]> = [];
 
     constructor(private readonly dataAccess: DataAccessImpl) {
         const slicesDigest = this.dataAccess.getDataAccessPointers().slices;
@@ -115,6 +124,7 @@ class DataSliceCollection implements IDataSliceCollection {
 
         this.count = slicesDigest.count;
         this.descriptors = slicesDigest.descriptors;
+        this.headers = slicesDigest.headerItems;
     }
 
     public [Symbol.iterator] = (): Iterator<IDataSlice> => {
