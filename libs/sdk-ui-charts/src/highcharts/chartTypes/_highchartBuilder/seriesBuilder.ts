@@ -159,12 +159,14 @@ export class HighchartsSeriesBuilder<
      * Customize builder with data point modification functions. These modifications functions will be used
      * if the data series modifications do not populate the data points themselves.
      *
-     * @param modifications
+     * This function is cumulative. It adds the modifications on top of whatever is already set in the builder.
+     *
+     * @param modifications - modifications to add
      */
     public withDataPointModifications(
         ...modifications: Array<HighchartDataPointModification<TData>>
     ): HighchartsSeriesBuilder<TSeries, TData> {
-        this.dataPointModifications = modifications ?? [];
+        this.dataPointModifications.push(...(modifications ?? []));
 
         return this;
     }
@@ -173,12 +175,14 @@ export class HighchartsSeriesBuilder<
      * Customize builder to use more complex and possibly stateful modifications during series and data point creation.
      * Builder will create stateful modifications per series using the provided factories.
      *
+     * This function is cumulative. It adds the modifications on top of whatever is already set in the builder.
+     *
      * @param factories factory functions to create stateful mods
      */
     public withStatefulModifications(
         ...factories: Array<HighchartSeriesStatefulModFactory<TSeries, TData>>
     ): HighchartsSeriesBuilder<TSeries, TData> {
-        this.complexModifications = factories;
+        this.complexModifications.push(...(factories ?? []));
 
         return this;
     }
