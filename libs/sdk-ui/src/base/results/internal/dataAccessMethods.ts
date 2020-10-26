@@ -11,6 +11,7 @@ import { IDataView, IMeasureDescriptor, IAttributeDescriptor } from "@gooddata/s
 import { DataAccessImpl } from "./dataAccessImpl";
 import { DataAccessConfig, DefaultDataAccessConfig } from "../dataAccessConfig";
 import { IMeasure, IAttribute, ITotal, measureLocalId } from "@gooddata/sdk-model";
+import isEmpty from "lodash/isEmpty";
 
 class FilteredIterator<T> implements Iterator<T> {
     private idx = 0;
@@ -142,6 +143,14 @@ class DataAccessMethods implements IDataAccessMethods {
 
     public slices(): IDataSliceCollection {
         return this.slicesCollection;
+    }
+
+    public hasScopedSeries(): boolean {
+        return !isEmpty(this.seriesCollection.scopingAttributes);
+    }
+
+    public hasSlices(): boolean {
+        return this.slicesCollection.count > 0;
     }
 }
 

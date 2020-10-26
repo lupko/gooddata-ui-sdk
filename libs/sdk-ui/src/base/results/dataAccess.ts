@@ -403,4 +403,18 @@ export interface IDataAccessMethods {
      * @returns collection of data slices that are available in the data view
      */
     slices(): IDataSliceCollection;
+
+    /**
+     * Convenience method to test whether the data series are scoped.
+     *
+     * @returns true if scoped, false if not
+     */
+    hasScopedSeries(): boolean;
+
+    /**
+     * Convenience method to test whether there are any data slices.
+     *
+     * @returns true if data slices exist, false if no data slicing defined OR data slicing defined but result is empty
+     */
+    hasSlices(): boolean;
 }
