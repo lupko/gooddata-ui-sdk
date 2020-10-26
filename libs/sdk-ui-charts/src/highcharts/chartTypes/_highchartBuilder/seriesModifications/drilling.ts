@@ -9,12 +9,7 @@ import {
     IMappingHeader,
     isSomeHeaderPredicateMatched,
 } from "@gooddata/sdk-ui";
-import {
-    IAttributeDescriptor,
-    IDataView,
-    IResultAttributeHeader,
-    IResultTotalHeader,
-} from "@gooddata/sdk-backend-spi";
+import { IAttributeDescriptor, IResultAttributeHeader, IResultTotalHeader } from "@gooddata/sdk-backend-spi";
 import { HighchartSeriesStatefulMod, HighchartSeriesStatefulModFactory } from "../seriesBuilder";
 import { InvariantError } from "ts-invariant";
 import flatten from "lodash/flatten";
@@ -135,18 +130,16 @@ class DrillingComplexModification<
  * stateful modifications which will enrich highchart data points and series with drilldown setup.
  *
  * @param predicates - header predicates which will determine whether particular data point is drillable
- * @param dataView - data being charted, this will be used to pass additional context to drill predicates
+ * @param dv - data being charted, this will be used to pass additional context to drill predicates
  */
 export function drillModification<
     TSeries extends Highcharts.SeriesOptionsType,
     TData extends ChartDataOptions
->(predicates: IHeaderPredicate[], dataView: IDataView): HighchartSeriesStatefulModFactory<TSeries, TData> {
+>(predicates: IHeaderPredicate[], dv: DataViewFacade): HighchartSeriesStatefulModFactory<TSeries, TData> {
     // TODO: as is, code does drill modifications even if there are no drill predicates - this is to preserve
     //  legacy behavior where old code was setting drilldown to false, isDrillable to false. it is likely that
     //  this is not really needed and the code here could return empty modifications if there are no drill
     //  predicates (= no drill processing whatsoever). evaluate and possibly change once the new approach is fully adopted.
-
-    const dv = DataViewFacade.for(dataView);
 
     return () => new DrillingComplexModification(predicates, dv);
 }

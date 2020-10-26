@@ -5,6 +5,11 @@ import { IDataView } from "@gooddata/sdk-backend-spi";
 import { HighchartOptions } from "../lib";
 import { InvariantError } from "ts-invariant";
 
+/**
+ * The responsibility of Highcharts Options Factory is to create a completely configured instance of Highchart.Options
+ * which can then be used to render a Highchart.Chart that will reflect the desired chart configuration, drilling setup
+ * and showing the underlying data.
+ */
 export type HighchartsOptionsFactory = (
     chartConfig: IChartConfig,
     drillableItems: IHeaderPredicate[],

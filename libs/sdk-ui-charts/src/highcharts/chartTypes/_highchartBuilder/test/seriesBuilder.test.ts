@@ -14,11 +14,11 @@ import {
 import { drillModification } from "../seriesModifications/drilling";
 import { measureColoringStrategy } from "../colorFactories";
 
+const TestDataView = recordedDataView(ReferenceRecordings.Scenarios.BarChart.SingleMeasureWithViewBy);
+
 describe("seriesBuilder", () => {
     it("creates series without drilling", () => {
-        const dataView = recordedDataView(ReferenceRecordings.Scenarios.BarChart.SingleMeasureWithViewBy);
-
-        const barSeries = BarSeriesBuilder(dataView)
+        const barSeries = BarSeriesBuilder(DataViewFacade.for(TestDataView))
             .withDataPointModifications(
                 datapointFormat,
                 datapointWithYValue,
@@ -38,7 +38,7 @@ describe("seriesBuilder", () => {
             DataViewFacade.for(dataView),
         );
 
-        const barSeries = BarSeriesBuilder(dataView)
+        const barSeries = BarSeriesBuilder(DataViewFacade.for(TestDataView))
             .withDataPointModifications(
                 datapointFormat,
                 datapointWithYValue,
@@ -52,16 +52,14 @@ describe("seriesBuilder", () => {
     });
 
     it("creates series with no drilling when no drill predicates", () => {
-        const dataView = recordedDataView(ReferenceRecordings.Scenarios.BarChart.SingleMeasureWithViewBy);
-
-        const barSeries = BarSeriesBuilder(dataView)
+        const barSeries = BarSeriesBuilder(DataViewFacade.for(TestDataView))
             .withDataPointModifications(
                 datapointFormat,
                 datapointWithYValue,
                 datapointNoMarkerForNullData,
                 datapointNameFromSlice,
             )
-            .withStatefulModifications(drillModification([], dataView))
+            .withStatefulModifications(drillModification([], DataViewFacade.for(TestDataView)))
             .populateFromDataSeries(seriesNameFromMeasure)
             .build();
 
@@ -69,9 +67,9 @@ describe("seriesBuilder", () => {
     });
 
     it("creates series with drilling", () => {
-        const dataView = recordedDataView(ReferenceRecordings.Scenarios.BarChart.SingleMeasureWithViewBy);
+        const dv = DataViewFacade.for(TestDataView);
 
-        const barSeries = BarSeriesBuilder(dataView)
+        const barSeries = BarSeriesBuilder(dv)
             .withDataPointModifications(
                 datapointFormat,
                 datapointWithYValue,
@@ -79,7 +77,7 @@ describe("seriesBuilder", () => {
                 datapointNameFromSlice,
             )
             .withStatefulModifications(
-                drillModification([HeaderPredicates.localIdentifierMatch(ReferenceLdm.Amount)], dataView),
+                drillModification([HeaderPredicates.localIdentifierMatch(ReferenceLdm.Amount)], dv),
             )
             .populateFromDataSeries(seriesNameFromMeasure)
             .build();

@@ -6,7 +6,7 @@ import { IChartConfig } from "../../../interfaces";
 import { getCommonResponsiveConfig } from "../_chartCreators/responsive";
 import { getAxesCounts } from "../_util/common";
 
-const BAR_TEMPLATE = {
+const BAR_TEMPLATE: Partial<HighchartOptions> = {
     chart: {
         type: "bar",
     },
