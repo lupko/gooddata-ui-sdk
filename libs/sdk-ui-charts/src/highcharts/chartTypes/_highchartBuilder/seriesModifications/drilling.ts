@@ -73,15 +73,26 @@ class DrillingComplexModification<
     TData extends ChartDataOptions
 > implements HighchartSeriesStatefulMod<TSeries, TData> {
     private drillEnabled = false;
+    private hasPredicates = false;
 
-    constructor(private predicates: IHeaderPredicate[], private dv: DataViewFacade) {}
+    constructor(private predicates: IHeaderPredicate[], private dv: DataViewFacade) {
+        this.hasPredicates = this.predicates.length > 0;
+    }
 
     public dataPointProcessing = (
-        seriesIdx: number,
+        _seriesIdx: number,
         _idx: number,
         dataPoint: DataPoint,
         data: TData,
     ): TData | undefined => {
+        if (!this.hasPredicates) {
+            // TODO: this is here to preserve legacy behavior; likely unneeded; remove after new approach adopted
+            return {
+                ...data,
+                drilldown: false,
+            };
+        }
+
         const intersection: IMappingHeader[] = [
             dataPoint.seriesDesc.measureDescriptor,
             ...toDrillingIntersection(
@@ -101,26 +112,21 @@ class DrillingComplexModification<
 
         this.drillEnabled = true;
 
-        /*
-         * note: old code passed 'true' in drilldown; which goes against the highchart typings. since we set and
-         * handle drilling ourselves, it seems any use of highcharts drilldown props is without effect anyway.
-         */
         return {
             ...data,
-            drilldown: `${seriesIdx}`,
+            // TODO: this is here to preserve legacy behavior; does not make sense as highcharts wants drilldown
+            //  prop to be ID of the series. we are probably mis-using a prop? evaluate and possibly change once
+            //  the new approach is fully adopted.
+            drilldown: true,
             drillIntersection: getDrillIntersection(intersection),
         };
     };
 
     public afterDataPointProcessing = (series: TSeries): TSeries | undefined => {
-        if (this.drillEnabled) {
-            return {
-                ...series,
-                isSeriesDrillable: true,
-            };
-        }
-
-        return series;
+        return {
+            ...series,
+            isDrillable: this.drillEnabled,
+        };
     };
 }
 
@@ -135,9 +141,10 @@ export function drillModification<
     TSeries extends Highcharts.SeriesOptionsType,
     TData extends ChartDataOptions
 >(predicates: IHeaderPredicate[], dataView: IDataView): HighchartSeriesStatefulModFactory<TSeries, TData> {
-    if (predicates.length === 0) {
-        return () => ({});
-    }
+    // TODO: as is, code does drill modifications even if there are no drill predicates - this is to preserve
+    //  legacy behavior where old code was setting drilldown to false, isDrillable to false. it is likely that
+    //  this is not really needed and the code here could return empty modifications if there are no drill
+    //  predicates (= no drill processing whatsoever). evaluate and possibly change once the new approach is fully adopted.
 
     const dv = DataViewFacade.for(dataView);
 
