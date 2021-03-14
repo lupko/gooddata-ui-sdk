@@ -17,7 +17,7 @@ import {
     measureMasterIdentifier,
     measureUri,
 } from "@gooddata/sdk-model";
-import { DataViewFacade } from "../results/facade";
+import { DataViewFacade } from "../facade";
 
 /**
  * This predicate is returned when predicate factory encounters invalid input. Having it to keep backward

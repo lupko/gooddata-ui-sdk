@@ -8,7 +8,7 @@ import {
 } from "@gooddata/sdk-backend-spi";
 import { IColor, IColorPalette, ITotal, ISortItem } from "@gooddata/sdk-model";
 import { GoodDataSdkError } from "../errors/GoodDataSdkError";
-import { IMappingHeader } from "../headerMatching/MappingHeader";
+import { IMappingHeader } from "../results/headerMatching/MappingHeader";
 
 /**
  * @public

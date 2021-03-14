@@ -3,10 +3,10 @@ import * as headerPredicateFactory from "../HeaderPredicateFactory";
 import { context, measureDescriptors } from "./HeaderPredicateFactory.fixtures";
 import { IMappingHeader } from "../MappingHeader";
 import { IHeaderPredicate } from "../HeaderPredicate";
-import { convertDrillableItemsToPredicates, isSomeHeaderPredicateMatched } from "../../vis/drilling";
+import { convertDrillableItemsToPredicates, isSomeHeaderPredicateMatched } from "../../../vis/drilling";
 import { dummyDataView } from "@gooddata/sdk-backend-mockingbird";
 import { newDefForBuckets } from "@gooddata/sdk-model";
-import { DataViewFacade } from "../../results/facade";
+import { DataViewFacade } from "../../facade";
 
 const emptyFacade = DataViewFacade.for(dummyDataView(newDefForBuckets("testWorkspace", [])));
 

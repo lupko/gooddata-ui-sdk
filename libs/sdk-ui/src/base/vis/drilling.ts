@@ -6,7 +6,7 @@ import {
     isTotalDescriptor,
 } from "@gooddata/sdk-backend-spi";
 import CustomEventPolyfill from "custom-event";
-import { identifierMatch, uriMatch } from "../headerMatching/HeaderPredicateFactory";
+import { identifierMatch, uriMatch } from "../results/headerMatching/HeaderPredicateFactory";
 import {
     IDrillableItem,
     IDrillEventIntersectionElement,
@@ -16,8 +16,8 @@ import {
     IDrillEvent,
     isDrillIntersectionAttributeItem,
 } from "./DrillEvents";
-import { IHeaderPredicate } from "../headerMatching/HeaderPredicate";
-import { IMappingHeader } from "../headerMatching/MappingHeader";
+import { IHeaderPredicate } from "../results/headerMatching/HeaderPredicate";
+import { IMappingHeader } from "../results/headerMatching/MappingHeader";
 import { DataViewFacade } from "../results/facade";
 
 /**

@@ -1,7 +1,7 @@
 // (C) 2019-2021 GoodData Corporation
 
 import { IDrillableItem, OnFiredDrillEvent } from "./DrillEvents";
-import { IHeaderPredicate } from "../headerMatching/HeaderPredicate";
+import { IHeaderPredicate } from "../results/headerMatching/HeaderPredicate";
 import React from "react";
 import { IErrorProps } from "../react/ErrorComponent";
 import { ILoadingProps } from "../react/LoadingComponent";

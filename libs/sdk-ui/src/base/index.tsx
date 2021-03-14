@@ -103,12 +103,12 @@ export {
     getMappingHeaderUri,
     getMappingHeaderName,
     getMappingHeaderIdentifier,
-} from "./headerMatching/MappingHeader";
+} from "./results/headerMatching/MappingHeader";
 export {
     IHeaderPredicate,
     IHeaderPredicateContext,
     isHeaderPredicate,
-} from "./headerMatching/HeaderPredicate";
+} from "./results/headerMatching/HeaderPredicate";
 
 export {
     HeaderPredicates,
@@ -118,7 +118,7 @@ export {
     identifierMatch,
     localIdentifierMatch,
     uriMatch,
-} from "./headerMatching/HeaderPredicateFactory";
+} from "./results/headerMatching/HeaderPredicateFactory";
 
 /*
  * Derived measure title generation

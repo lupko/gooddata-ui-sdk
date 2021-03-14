@@ -1,6 +1,6 @@
 // (C) 2007-2020 GoodData Corporation
 import { IMappingHeader } from "./MappingHeader";
-import { DataViewFacade } from "../results/facade";
+import { DataViewFacade } from "../facade";
 
 /**
  * @public
