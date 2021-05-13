@@ -1,7 +1,7 @@
-// (C) 2019-2020 GoodData Corporation
+// (C) 2019-2021 GoodData Corporation
 import { IChartConfig } from "../../../interfaces";
 import { BucketNames, DataViewFacade, IHeaderPredicate } from "@gooddata/sdk-ui";
-import Highcharts, { HighchartOptions } from "../../lib";
+import Highcharts, { HighchartsOptions } from "../../lib";
 import { HighchartsOptionsBuilder } from "../_highchartBuilder/optionsBuilder";
 import { getBaseTemplate } from "../_chartCreators/commonConfiguration";
 import { getBarConfiguration } from "./barConfiguration";
@@ -70,10 +70,12 @@ export function barChartOptionsFactory(
     chartConfig: IChartConfig,
     drillableItems: IHeaderPredicate[],
     dv: DataViewFacade,
-): HighchartOptions {
+): HighchartsOptions {
     const series = dv.def().isBucketEmpty(BucketNames.STACK)
         ? barChartSeries(chartConfig, drillableItems, dv)
         : stackedBarChartSeries(chartConfig, drillableItems, dv);
 
-    return HighchartsOptionsBuilder.from(getBaseTemplate(), getBarConfiguration()).setSeries(series).build();
+    return HighchartsOptionsBuilder.from(getBaseTemplate(), getBarConfiguration(chartConfig))
+        .setSeries(series)
+        .build();
 }

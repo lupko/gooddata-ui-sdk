@@ -2,62 +2,10 @@
 // Have only one entrypoint to highcharts and drill module
 // Import this reexported variable in other files instead of direct import from highcharts
 import Highcharts, {
-    SeriesAreaDataOptions,
-    SeriesArearangeDataOptions,
-    SeriesAreasplineDataOptions,
-    SeriesAreasplinerangeDataOptions,
-    SeriesBarDataOptions,
-    SeriesBoxplotDataOptions,
-    SeriesBubbleDataOptions,
-    SeriesBulletDataOptions,
-    SeriesCandlestickDataOptions,
-    SeriesColumnDataOptions,
-    SeriesColumnpyramidDataOptions,
-    SeriesColumnrangeDataOptions,
-    SeriesCylinderDataOptions,
-    SeriesDependencywheelDataOptions,
-    SeriesErrorbarDataOptions,
-    SeriesFlagsDataOptions,
-    SeriesFunnel3dDataOptions,
-    SeriesFunnelDataOptions,
-    SeriesGanttDataOptions,
-    SeriesGaugeDataOptions,
-    SeriesHeatmapDataOptions,
-    SeriesHistogramDataOptions,
-    SeriesItemDataOptions,
-    SeriesLineDataOptions,
     SeriesMapbubbleDataOptions,
     SeriesMapDataOptions,
-    SeriesMaplineDataOptions,
-    SeriesMapOptions,
     SeriesMappointDataOptions,
-    SeriesNetworkgraphDataOptions,
-    SeriesOhlcDataOptions,
-    SeriesOrganizationDataOptions,
-    SeriesPackedbubbleDataOptions,
-    SeriesParetoDataOptions,
-    SeriesPieDataOptions,
-    SeriesPolygonDataOptions,
-    SeriesPyramid3dDataOptions,
-    SeriesPyramidDataOptions,
-    SeriesSankeyDataOptions,
-    SeriesScatter3dDataOptions,
-    SeriesScatterDataOptions,
-    SeriesSolidgaugeDataOptions,
-    SeriesSplineDataOptions,
-    SeriesStreamgraphDataOptions,
-    SeriesSunburstDataOptions,
-    SeriesTilemapDataOptions,
-    SeriesTimelineOptions,
-    SeriesTreemapDataOptions,
-    SeriesVariablepieDataOptions,
-    SeriesVariwideDataOptions,
-    SeriesVectorDataOptions,
-    SeriesVennDataOptions,
-    SeriesWaterfallDataOptions,
-    SeriesWindbarbDataOptions,
-    SeriesWordcloudDataOptions,
-    SeriesXrangeDataOptions,
+    SeriesSankeyPointOptionsObject,
 } from "highcharts";
 
 export type HTMLDOMElement = Highcharts.HTMLDOMElement;
@@ -83,62 +31,10 @@ export type PointOptionsObject = Highcharts.PointOptionsObject;
  * @internal
  */
 export type ChartDataOptions =
-    | SeriesAreaDataOptions
-    | SeriesArearangeDataOptions
-    | SeriesAreasplineDataOptions
-    | SeriesAreasplinerangeDataOptions
-    | SeriesBarDataOptions
-    | SeriesBoxplotDataOptions
-    | SeriesBubbleDataOptions
-    | SeriesBulletDataOptions
-    | SeriesCandlestickDataOptions
-    | SeriesColumnDataOptions
-    | SeriesColumnpyramidDataOptions
-    | SeriesColumnrangeDataOptions
-    | SeriesCylinderDataOptions
-    | SeriesDependencywheelDataOptions
-    | SeriesErrorbarDataOptions
-    | SeriesFlagsDataOptions
-    | SeriesFunnel3dDataOptions
-    | SeriesFunnelDataOptions
-    | SeriesGanttDataOptions
-    | SeriesGaugeDataOptions
-    | SeriesHeatmapDataOptions
-    | SeriesHistogramDataOptions
-    | SeriesItemDataOptions
-    | SeriesLineDataOptions
+    | PointOptionsObject
+    | SeriesSankeyPointOptionsObject
     | SeriesMapbubbleDataOptions
     | SeriesMapDataOptions
-    | SeriesMaplineDataOptions
-    | SeriesMapOptions
-    | SeriesMappointDataOptions
-    | SeriesNetworkgraphDataOptions
-    | SeriesOhlcDataOptions
-    | SeriesOrganizationDataOptions
-    | SeriesPackedbubbleDataOptions
-    | SeriesParetoDataOptions
-    | SeriesPieDataOptions
-    | SeriesPolygonDataOptions
-    | SeriesPyramid3dDataOptions
-    | SeriesPyramidDataOptions
-    | SeriesSankeyDataOptions
-    | SeriesScatter3dDataOptions
-    | SeriesScatterDataOptions
-    | SeriesSolidgaugeDataOptions
-    | SeriesSplineDataOptions
-    | SeriesStreamgraphDataOptions
-    | SeriesSunburstDataOptions
-    | SeriesTilemapDataOptions
-    | SeriesTimelineOptions
-    | SeriesTreemapDataOptions
-    | SeriesVariablepieDataOptions
-    | SeriesVariwideDataOptions
-    | SeriesVectorDataOptions
-    | SeriesVennDataOptions
-    | SeriesWaterfallDataOptions
-    | SeriesWindbarbDataOptions
-    | SeriesWordcloudDataOptions
-    | SeriesXrangeDataOptions;
-
+    | SeriesMappointDataOptions;
 
 export default Highcharts;

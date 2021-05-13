@@ -1,11 +1,11 @@
-// (C) 2007-2020 GoodData Corporation
-import Highcharts, { HighchartOptions } from "../../lib";
+// (C) 2007-2021 GoodData Corporation
+import Highcharts, { HighchartsOptions } from "../../lib";
 import merge from "lodash/merge";
 
 export class HighchartsOptionsBuilder {
-    private readonly ho: HighchartOptions;
+    private readonly ho: HighchartsOptions;
 
-    private constructor(initialOptions: HighchartOptions) {
+    private constructor(initialOptions: HighchartsOptions) {
         this.ho = initialOptions;
     }
 
@@ -17,10 +17,10 @@ export class HighchartsOptionsBuilder {
      * @param partials - additional partials to merge on top of the base, optional
      */
     public static from(
-        baseTemplate: HighchartOptions,
-        ...partials: Array<Partial<HighchartOptions>>
+        baseTemplate: HighchartsOptions,
+        ...partials: Array<Partial<HighchartsOptions>>
     ): HighchartsOptionsBuilder {
-        const initialOptions: HighchartOptions = merge({}, baseTemplate, ...(partials ?? []));
+        const initialOptions: HighchartsOptions = merge({}, baseTemplate, ...(partials ?? []));
 
         return new HighchartsOptionsBuilder(initialOptions);
     }
@@ -41,7 +41,7 @@ export class HighchartsOptionsBuilder {
         return this;
     }
 
-    public build(): HighchartOptions {
+    public build(): HighchartsOptions {
         return this.ho;
     }
 }

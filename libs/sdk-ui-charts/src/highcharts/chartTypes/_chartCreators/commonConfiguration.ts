@@ -8,7 +8,7 @@ import { styleVariables } from "./styles/variables";
 import { isOneOfTypes } from "../_util/common";
 import { chartClick } from "./drilldownEventing";
 import { setupDrilldown } from "./setupDrilldownToParentAttribute";
-import Highcharts, { HighchartOptions } from "../../lib";
+import Highcharts, { HighchartsOptions } from "../../lib";
 import { supportedDualAxesChartTypes } from "../_chartOptions/chartCapabilities";
 import { IChartOptions } from "../../typings/unsafe";
 import { ITheme } from "@gooddata/sdk-backend-spi";
@@ -38,7 +38,7 @@ function fixNumericalAxisOutOfMinMaxRange(axis: IHighchartsAxisExtend) {
 
 let previousChart: any = null;
 
-function getThemedConfiguration(theme: ITheme): HighchartOptions {
+function getThemedConfiguration(theme: ITheme): HighchartsOptions {
     const backgroundColor =
         theme?.chart?.backgroundColor ??
         theme?.palette?.complementary?.c0 ??
@@ -127,6 +127,8 @@ function getThemedConfiguration(theme: ITheme): HighchartOptions {
                 fontFamily: 'Avenir, "Helvetica Neue", Arial, sans-serif',
             },
             events: {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 afterGetContainer() {
                     handleTooltipOffScreen(this.renderTo);
                 },
@@ -136,6 +138,8 @@ function getThemedConfiguration(theme: ITheme): HighchartOptions {
             {
                 lineColor: axisLineColor,
                 events: {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     afterSetAxisTranslation() {
                         fixNumericalAxisOutOfMinMaxRange(this);
                     },
@@ -190,6 +194,6 @@ export function getCommonConfiguration(
     );
 }
 
-export function getBaseTemplate(): HighchartOptions {
-    return cloneDeep(BASE_TEMPLATE);
+export function getBaseTemplate(theme?: ITheme): HighchartsOptions {
+    return getThemedConfiguration(theme);
 }

@@ -1,5 +1,5 @@
-// (C) 2007-2020 GoodData Corporation
-import Highcharts, { HighchartOptions } from "../../lib";
+// (C) 2007-2021 GoodData Corporation
+import Highcharts from "../../lib";
 import { IChartConfig } from "../../../interfaces";
 import { identity } from "lodash";
 
@@ -66,7 +66,7 @@ export class AxesBuilder {
 export class XAxisOptionsBuilder {
     private readonly xAxis: Highcharts.XAxisOptions = {};
 
-    private constructor(private readonly config: IChartConfig) {}
+    private constructor(protected readonly config: IChartConfig) {}
 
     public static usingConfig(config: IChartConfig = {}) {
         return new XAxisOptionsBuilder(config);
@@ -80,7 +80,7 @@ export class XAxisOptionsBuilder {
 export class YAxisOptionsBuilder {
     private readonly yAxis: Highcharts.YAxisOptions = {};
 
-    private constructor(private readonly config: IChartConfig) {}
+    private constructor(protected readonly config: IChartConfig) {}
 
     public static usingConfig(config: IChartConfig = {}) {
         return new YAxisOptionsBuilder(config);

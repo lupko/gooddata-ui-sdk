@@ -1,4 +1,4 @@
-// (C) 2007-2020 GoodData Corporation
+// (C) 2007-2021 GoodData Corporation
 import Highcharts, { ChartDataOptions } from "../../lib";
 import { DataPoint, DataViewFacade, IDataSeries, IDataSlice } from "@gooddata/sdk-ui";
 
@@ -14,7 +14,7 @@ type HighchartsDataPointFactory<T extends ChartDataOptions | null> = () => T;
  */
 export type HighchartSeriesModification<
     TSource extends IDataSeries | IDataSlice,
-    TSeries extends Highcharts.SeriesOptionsType
+    TSeries extends Highcharts.SeriesOptionsType,
 > = (idx: number, data: TSource, input: TSeries) => TSeries | undefined;
 
 /**
@@ -49,7 +49,7 @@ export type HighchartSeriesTransformation<TSeries extends Highcharts.SeriesOptio
  */
 export interface HighchartSeriesStatefulMod<
     TSeries extends Highcharts.SeriesOptionsType,
-    TData extends ChartDataOptions
+    TData extends ChartDataOptions,
 > {
     /**
      * Modification function to call when builder constructs highchart series from the underlying data series.
@@ -83,7 +83,7 @@ export interface HighchartSeriesStatefulMod<
 
 export type HighchartSeriesStatefulModFactory<
     TSeries extends Highcharts.SeriesOptionsType,
-    TData extends ChartDataOptions
+    TData extends ChartDataOptions,
 > = () => HighchartSeriesStatefulMod<TSeries, TData>;
 
 /**
@@ -134,7 +134,7 @@ export type HighchartSeriesStatefulModFactory<
  */
 export class HighchartsSeriesBuilder<
     TSeries extends Highcharts.SeriesOptionsType,
-    TData extends ChartDataOptions
+    TData extends ChartDataOptions,
 > {
     private readonly seriesFactory: HighchartsSeriesFactory<TSeries>;
     private readonly dataPointFactory: HighchartsDataPointFactory<TData>;
@@ -295,7 +295,7 @@ export class HighchartsSeriesBuilder<
          * If the series modification functions did not populate data, then perform the templated data point
          * processing.
          */
-        if (newSeries.data === undefined) {
+        if ((newSeries as any).data === undefined) {
             /*
              * Apply before-data-point-processing transformations (if any). Again, these may cancel the whole
              * series if they return 'undefined' so bail out if that happens.
@@ -315,7 +315,11 @@ export class HighchartsSeriesBuilder<
             const allDataPointModifications = this.dataPointModifications.concat(
                 complexModifications.map((c) => c.dataPointProcessing),
             );
-            newSeries.data = this.createDataPoints(seriesIdx, from.dataPoints(), allDataPointModifications);
+            (newSeries as any) = this.createDataPoints(
+                seriesIdx,
+                from.dataPoints(),
+                allDataPointModifications,
+            );
 
             /*
              * Finally perform post-data-point-processing transformations specified in the complex transformations.

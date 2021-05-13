@@ -507,6 +507,8 @@ export interface IColorsData {
 
 // @public
 export interface IDataAccessMethods {
+    hasScopedSeries(): boolean;
+    hasSlices(): boolean;
     // (undocumented)
     series(): IDataSeriesCollection;
     // (undocumented)
@@ -530,8 +532,9 @@ export interface IDataSeriesCollection extends Iterable<IDataSeries> {
     firstForMeasure(localIdOrMeasure: string | IMeasure): IDataSeries;
     readonly fromMeasures: IMeasureDescriptor[];
     readonly fromMeasuresDef: IMeasure[];
-    readonly scopingAttributes?: IAttributeDescriptor[];
-    readonly scopingAttributesDef?: IAttribute[];
+    readonly scopingAttributes: IAttributeDescriptor[];
+    readonly scopingAttributesDef: IAttribute[];
+    readonly scopingHeaders: IResultAttributeHeader[][];
     toArray(): IDataSeries[];
 }
 
@@ -559,6 +562,7 @@ export interface IDataSlice extends DataSliceDescriptorMethods, Iterable<DataPoi
 export interface IDataSliceCollection extends Iterable<IDataSlice> {
     readonly count: number;
     readonly descriptors: Array<IAttributeDescriptor | ITotal>;
+    readonly headers: Array<IResultAttributeHeader[] | IResultTotalHeader[]>;
     toArray(): IDataSlice[];
 }
 
