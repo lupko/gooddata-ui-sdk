@@ -115,6 +115,20 @@ export const PieSeriesBuilder = (
 ): HighchartsSeriesBuilder<Highcharts.SeriesPieOptions, Highcharts.PointOptionsObject> =>
     new HighchartsSeriesBuilder(pieSeriesFactory, pieDatapoint, dv);
 
+const sankeySeriesFactory = (): Highcharts.SeriesSankeyOptions => ({ type: "sankey" });
+const sankeyDatapoint = (): Highcharts.SeriesSankeyPointOptionsObject => ({});
+
+/**
+ * Creates new builder for `sankey` series.
+ *
+ * @param dv - data to work with
+ * @constructor
+ */
+export const SankeySeriesBuilder = (
+    dv: DataViewFacade,
+): HighchartsSeriesBuilder<Highcharts.SeriesSankeyOptions, Highcharts.SeriesSankeyPointOptionsObject> =>
+    new HighchartsSeriesBuilder(sankeySeriesFactory, sankeyDatapoint, dv);
+
 const scatterSeriesFactory = (): Highcharts.SeriesScatterOptions => ({ type: "scatter" });
 const scatterDatapoint = (): Highcharts.PointOptionsObject => ({});
 
