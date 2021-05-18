@@ -52,7 +52,8 @@ export type ChartType =
     | "waterfall"
     | "funnel"
     | "pareto"
-    | "alluvial";
+    | "alluvial"
+    | "sankey";
 
 /**
  * @public
