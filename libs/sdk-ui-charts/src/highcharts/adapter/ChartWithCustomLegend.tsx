@@ -88,7 +88,7 @@ function updateAxisTitleStyle(axis: Highcharts.AxisOptions) {
     });
 }
 
-export class HighChartsRenderer extends React.PureComponent<
+export class ChartWithCustomLegend extends React.PureComponent<
     IHighChartsRendererProps,
     IHighChartsRendererState
 > {

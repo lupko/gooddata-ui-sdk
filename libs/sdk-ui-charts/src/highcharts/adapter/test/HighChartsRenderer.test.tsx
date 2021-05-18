@@ -5,7 +5,7 @@ import noop from "lodash/noop";
 
 import { dummyDataView } from "@gooddata/sdk-backend-mockingbird";
 
-import { HighChartsRenderer, FLUID_LEGEND_THRESHOLD } from "../HighChartsRenderer";
+import { ChartWithCustomLegend, FLUID_LEGEND_THRESHOLD } from "../ChartWithCustomLegend";
 import { getHighchartsOptions } from "../../chartTypes/_chartCreators/highChartsCreators";
 import { Chart } from "../Chart";
 import { VisualizationTypes, IDrillConfig } from "@gooddata/sdk-ui";
@@ -53,7 +53,7 @@ function createComponent(customProps: any = {}, zoomable = false) {
         },
         ...customProps,
     };
-    return <HighChartsRenderer {...chartProps} />;
+    return <ChartWithCustomLegend {...chartProps} />;
 }
 
 describe("HighChartsRenderer", () => {

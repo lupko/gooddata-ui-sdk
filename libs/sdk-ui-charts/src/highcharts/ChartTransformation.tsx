@@ -14,12 +14,12 @@ import { IChartConfig, OnLegendReady } from "../interfaces";
 import { getChartOptions } from "./chartTypes/_chartOptions/chartOptionsBuilder";
 import { getHighchartsOptions } from "./chartTypes/_chartCreators/highChartsCreators";
 import {
-    HighChartsRenderer,
+    ChartWithCustomLegend,
     IHighChartsRendererProps,
     renderChart as chartRenderer,
     renderLegend as legendRenderer,
-} from "./adapter/HighChartsRenderer";
-import { HighChartsMeasuredRenderer } from "./adapter/HighChartsMeasuredRenderer";
+} from "./adapter/ChartWithCustomLegend";
+import { MeasuredRenderer } from "./MeasuredRenderer";
 import buildLegendOptions from "./adapter/legendBuilder";
 import noop from "lodash/noop";
 import isEqual from "lodash/isEqual";
@@ -33,12 +33,12 @@ import { withTheme } from "@gooddata/sdk-ui-theme-provider";
 import Highcharts from "./lib";
 import { isChartSupported, stringifyChartTypes } from "./chartTypes/_util/common";
 
-export function renderHighCharts(props: IHighChartsRendererProps): JSX.Element {
+function renderHighCharts(props: IHighChartsRendererProps): JSX.Element {
     const childrenRenderer = (contentRect: ContentRect) => (
-        <HighChartsRenderer contentRect={contentRect} {...props} />
+        <ChartWithCustomLegend contentRect={contentRect} {...props} />
     );
 
-    return <HighChartsMeasuredRenderer childrenRenderer={childrenRenderer} />;
+    return <MeasuredRenderer childrenRenderer={childrenRenderer} />;
 }
 
 /**
@@ -66,7 +66,7 @@ export interface IChartTransformationProps extends WrappedComponentProps {
     renderer?(arg: IHighChartsRendererProps): JSX.Element;
 }
 
-const ChartTransformationImpl = (props: IChartTransformationProps) => {
+function LegacyChartTransformation(props: IChartTransformationProps) {
     const {
         config,
         renderer = renderHighCharts,
@@ -157,13 +157,29 @@ const ChartTransformationImpl = (props: IChartTransformationProps) => {
     const resetZoomButtonTooltip = intl
         ? intl.formatMessage({ id: "visualization.tooltip.resetZoom" })
         : null;
+
     return renderer({ ...rendererProps, chartRenderer, legendRenderer, resetZoomButtonTooltip });
+}
+
+const ChartTransformationImpl = (props: IChartTransformationProps) => {
+    switch (props.config.type) {
+        case "sankey": {
+            break;
+        }
+        default: {
+            return LegacyChartTransformation(props);
+        }
+    }
 };
 
 /**
  * @internal
  */
 const ChartTransformationWithInjectedProps = injectIntl(withTheme(ChartTransformationImpl));
+
+/**
+ * @internal
+ */
 export const ChartTransformation = React.memo(ChartTransformationWithInjectedProps, (props, nextProps) => {
     return isEqual(omitBy(props, isFunction), omitBy(nextProps, isFunction));
 });

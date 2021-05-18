@@ -1,7 +1,7 @@
 // (C) 2019-2021 GoodData Corporation
 import { Chart, IChartProps } from "./adapter/Chart";
 import { ChartTransformation, IChartTransformationProps } from "./ChartTransformation";
-export { IHighChartsRendererProps } from "./adapter/HighChartsRenderer";
+export { IHighChartsRendererProps } from "./adapter/ChartWithCustomLegend";
 export { Chart, ChartTransformation, IChartTransformationProps, IChartProps };
 
 /*
@@ -9,7 +9,7 @@ export { Chart, ChartTransformation, IChartTransformationProps, IChartProps };
  *  or moved elsewhere.
  */
 
-export { FLUID_LEGEND_THRESHOLD } from "./adapter/HighChartsRenderer";
+export { FLUID_LEGEND_THRESHOLD } from "./adapter/ChartWithCustomLegend";
 export { COMBO_SUPPORTED_CHARTS } from "./chartTypes/comboChart/comboChartOptions";
 export { updateConfigWithSettings } from "./chartTypes/_chartOptions/chartOptionsForSettings";
 

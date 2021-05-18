@@ -7,7 +7,7 @@ export interface IHighChartsMeasuredRendererProps {
     childrenRenderer: (contentRect: ContentRect) => JSX.Element;
 }
 
-export function HighChartsMeasuredRenderer(props: IHighChartsMeasuredRendererProps): JSX.Element {
+export function MeasuredRenderer(props: IHighChartsMeasuredRendererProps): JSX.Element {
     return (
         <Measure client={true}>
             {({ measureRef, contentRect }: MeasuredComponentProps) => {

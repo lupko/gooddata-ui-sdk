@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import noop from "lodash/noop";
 
 import { ChartTransformation } from "../ChartTransformation";
-import { HighChartsRenderer } from "../adapter/HighChartsRenderer";
+import { ChartWithCustomLegend } from "../adapter/ChartWithCustomLegend";
 import { IChartConfig } from "../../interfaces";
 import { getRgbString } from "@gooddata/sdk-ui-vis-commons";
 import { IColorPaletteItem, measureLocalId } from "@gooddata/sdk-model";
@@ -187,7 +187,7 @@ describe("ChartTransformation", () => {
                 },
             };
             const wrapper = mount(createComponent(props));
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(0);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(0);
             expect(onDataTooLarge).toHaveBeenCalledTimes(1);
         });
 
@@ -204,10 +204,10 @@ describe("ChartTransformation", () => {
                 },
             };
             const wrapper = mount(createComponent());
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(1);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(1);
 
             wrapper.setProps(props);
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(0);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(0);
             expect(onDataTooLarge).toHaveBeenCalledTimes(1);
 
             wrapper.setProps({
@@ -217,7 +217,7 @@ describe("ChartTransformation", () => {
                     limits: undefined,
                 },
             });
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(1);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(1);
         });
     });
 
@@ -278,7 +278,7 @@ describe("ChartTransformation", () => {
                 ...pieChartPropsWithNegativeValue,
             };
             const wrapper = mount(createComponent(props));
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(0);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(0);
             expect(onNegativeValues).toHaveBeenCalledTimes(1);
         });
 
@@ -289,14 +289,14 @@ describe("ChartTransformation", () => {
                 ...pieChartPropsWithNegativeValue,
             };
             const wrapper = mount(createComponent());
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(1);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(1);
 
             wrapper.setProps(props);
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(0);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(0);
             expect(onNegativeValues).toHaveBeenCalledTimes(1);
 
             wrapper.setProps(PieChartSingleMeasure);
-            expect(wrapper.find(HighChartsRenderer)).toHaveLength(1);
+            expect(wrapper.find(ChartWithCustomLegend)).toHaveLength(1);
         });
     });
 
@@ -317,13 +317,13 @@ describe("ChartTransformation", () => {
 
         it.each([[TOP], [MIDDLE], [BOTTOM]])("should props.verticalAlign be %s", (verticalAlign: string) => {
             const wrapper = render({ chart: { verticalAlign } });
-            const highChartsRendererProps = wrapper.find(HighChartsRenderer).props();
+            const highChartsRendererProps = wrapper.find(ChartWithCustomLegend).props();
             expect(highChartsRendererProps.chartOptions.verticalAlign).toBe(verticalAlign);
         });
 
         it("should props.verticalAlign be undefined", () => {
             const wrapper = render({});
-            const highChartsRendererProps = wrapper.find(HighChartsRenderer).props();
+            const highChartsRendererProps = wrapper.find(ChartWithCustomLegend).props();
             expect(highChartsRendererProps.chartOptions.verticalAlign).toBe(undefined);
         });
     });
